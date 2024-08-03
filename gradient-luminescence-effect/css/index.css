@@ -1,0 +1,64 @@
+*{
+    /* 初始化内外边距 */
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background-color: #000;
+}
+
+.loader{
+    width: 150px;
+    height: 150px;
+    /* border: 1px solid; */
+    /* 设置圆角 */
+    border-radius: 50%;
+    /* margin: 0 10px; */
+    /* 我们的背景色实际上给的是一个渐变色 */
+    background: linear-gradient(45deg, transparent, transparent 40%, #e5f403);
+    animation: rotate 1s linear infinite;
+    position: relative;
+}
+
+@keyframes rotate{
+    0%{
+        /* CSS3 提供了变形函数 */
+        transform: rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* 接下来我们要制作发光的效果 */
+.loader::before{
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    /* border:1px solid; */
+    background: linear-gradient(45deg, transparent, transparent 40%, #e5f403);
+    border-radius: 50%;
+    filter: blur(30px);
+}
+
+/* after 设置中间的一个圆，背景色和 body 一样 */
+.loader::after{
+    content : "";
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    background: #000;
+    border-radius: 50%;
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        /* background-color: #333; */
+        /*背景图片 路径 不平埔 居中 对齐方式 颜色*/
+        background: url("p1.jpg") no-repeat center top #333;
+      }
+      /*加载效果外部盒子*/
+      .box {
+        /*当前元素宽度*/
+        width: 200px;
+        /*当前元素高度*/
+        height: 200px;
+        box-sizing: border-box;
+        /*边框*/
+        border: 5px solid #cb6341;
+        /*固定定位*/
+        position: fixed;
+        /*水平垂直居中*/
+        left: 50%;
+        top: 50%;
+        margin-top: -100px;
+        margin-left: -100px;
+      }
+      /*外部两个滚动 边框*/
+      .box:after,
+      .box:before {
+        /*设置内容为空*/
+        content: "";
+        /*宽度高度放大20% 让两个边框处于 内部盒子之外*/
+        width: 120%;
+        height: 120%;
+        box-sizing: border-box;
+        border: 2px solid;
+        /*相对定位  box盒子 处于 外部边框中间*/
+        position: absolute;
+        top: -10%;
+        left: -10%;
+        /*对两个外边框增加动画*/
+        animation: boxBorder 6s linear infinite;
+      }
+      /*上方边框 比下方边框延迟3秒执行*/
+      .box:before {
+        /*允许负值，-2s 使动画马上开始，但跳过 2 秒进入动画。*/
+        animation-delay: -3s;
+      }
+      /*盒子内部梅花操作*/
+      .box .icon {
+        /*规定内部在box中居中显示*/
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100px;
+        height: 100px;
+        margin-top: -50px;
+        margin-left: -50px;
+        /*是内部梅花动起来*/
+        animation: iconBox 3s linear infinite;
+      }
+      /*原理同box：before，box：after*/
+      .box .icon:after,
+      .box .icon:before {
+        content: "";
+        width: 40%;
+        height: 100%;
+        box-sizing: border-box;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        position: absolute;
+        top: 0;
+        left: 30px;
+        animation: iconBorder 3s linear infinite;
+      }
+      /*旋转堆叠出*形状*/
+      .box .icon:after {
+        transform: rotate(60deg);
+      }
+      .box .icon:before {
+        transform: rotate(-60deg);
+      }
+      .box .icon2:before {
+        transform: rotate(0deg);
+      }
+
+      /*规定小圆球位置和形状*/
+      .box .icon2:after {
+        height: 10px;
+        width: 10px;
+        background-color: #fff;
+        transform: translate(12px, -6px);
+        border: 3px solid #333;
+        /*这是由 CSS2.1 规定的宽度高度行为。
+
+宽度和高度分别应用到元素的内容框。
+
+在宽度和高度之外绘制元素的内边距和边框。*/
+        box-sizing: content-box;
+        animation: iconYuan 3s linear infinite 0.6s;
+      }
+      /* 布局结束 */
+      /* 动画开始 */
+      @keyframes iconBox {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes iconBorder {
+        0% {
+          border-color: #fff;
+        }
+        30% {
+          border-color: yellow;
+        }
+        60% {
+          border-color: blue;
+        }
+        100% {
+          border-color: red;
+        }
+      }
+      @keyframes iconYuan {
+        0% {
+          background-color: #fff;
+        }
+        30% {
+          background-color: yellow;
+        }
+        60% {
+          background-color: blue;
+        }
+        100% {
+          background-color: red;
+        }
+      }
+      @keyframes boxBorder {
+        0% {
+          border-color: #fff;
+          /*clip 属性剪裁绝对定位元素。
+
+当一幅图像的尺寸大于包含它的元素时会发生什么呢？"clip" 属性允许您规定一个元素的可见尺寸，这样此元素就会被修剪并显示为这个形状。
+
+让你指定一个绝对定位的元素，该尺寸应该是可见的，该元素被剪裁成这种形状并显示。
+
+注意：: 如果先有"overflow：visible"，clip属性不起作用。
+
+设置元素的形状。唯一合法的形状值是：rect (top, right, bottom, left)
+*/
+          clip: rect(0, 240px, 2px, 0);
+        }
+        25% {
+          border-color: yellow;
+          clip: rect(0, 2px, 240px, 0);
+        }
+        50% {
+          border-color: blue;
+          clip: rect(218px, 240px, 240px, 0);
+        }
+        75% {
+          border-color: green;
+          clip: rect(0, 240px, 240px, 218px);
+        }
+        100% {
+          border-color: aqua;
+          clip: rect(0, 240px, 2px, 0);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <div class="icon icon1"></div>
+      <div class="icon icon2"></div>
+    </div>
+  </body>
+</html>

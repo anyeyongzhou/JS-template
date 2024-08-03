@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试页</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 450px;
+            height: 450px;
+            border: 1px solid;
+            /* container 就变成了一个弹性盒容器 */
+            display: flex;
+            /* x轴的排列方式 */
+            justify-content: center;
+            /* y轴的排列方式 */
+            align-items: center;
+        }
+        /* 弹性盒项目 */
+        .item{
+            width: 90px;
+            height: 90px;
+            border: 1px solid;
+        }
+        .test{
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+            background: linear-gradient(45deg, #e66465 50%, #9198e5 70%);
+            position: absolute;
+            /* 2. 使用动画 */
+            /* 动画的名字 播放的时间 匀速播放 无限播放 */
+            /* animation: testAnimation 2s linear infinite; */
+        }
+        /* 1. 定义关键帧动画 */
+        @keyframes testAnimation{
+            /* 0%~100% */
+            0%{
+                left: 0;
+                top: 0;
+            }
+            100%{
+                left: 500px;
+                top: 500px;
+            }
+        }
+        .test2{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 100px;
+            /* filter: blur(5px); */
+            filter: hue-rotate(60deg);
+        }
+        .test3{
+            width: 200px;
+            height: 200px;
+            border:1px solid;
+            margin: 100px;
+        }
+        .test3::before{
+            content: "";
+            border:1px solid;
+            width: 30px;
+            height: 30px;
+            display: block;
+            margin:10px;
+        }
+        .test3::after{
+            content: "bbb";
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. 弹性盒布局 -->
+    <!-- <div class="container">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div> -->
+    <!-- 2. 线性渐变 -->
+    <!-- 3. CSS3 动画 -->
+    <!-- <div class="test"></div> -->
+    <!-- 4. 滤镜 -->
+    <div class="test2"></div>
+    <!-- <input type="color" name="" id=""> -->
+    <!-- 5. 伪元素选择器 before after -->
+    <!-- <div class="test3">123123213</div> -->
+</body>
+</html>

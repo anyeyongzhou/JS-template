@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试页面</title>
+    <style>
+        /* .container{
+            width: 500px;
+            height: 500px;
+            border:1px solid;
+            display: flex;
+            justify-content:space-around;
+            align-items:center;
+            flex-wrap: wrap;
+        }
+        .container .item{
+            width: 100px;
+            height: 100px;
+            border:1px solid;
+        } */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .test{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* animation: move 1s linear infinite; */
+        }
+        /* 动画是CSS3新增内容 */
+        /* 1. 定义动画 2. 使用动画 */
+        @keyframes move{
+            /* 0%-100% */
+            0%{
+                top: 0;
+                left: 0;
+            }
+            50%{
+                top: 0;
+                left: 500px;
+            }
+            100%{
+                top: 300px;
+                left: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="container">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div> -->
+    <div class="test"></div>
+</body>
+</html>

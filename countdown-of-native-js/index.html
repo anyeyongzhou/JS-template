@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>demo</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      body {
+        background: #000;
+      }
+      div {
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="time"></div>
+    <br />
+    <div id="day"></div>
+    <br />
+    <div id="tm"></div>
+    <script type="text/javascript">
+      //在页面加载完后立即执行多个函数完美方案。
+      //window.onload可以是一个函数。如果是，这个函数将在页面加载完成之后被执行。这里typeof是检测类型，函数的类型就是"function"这个字符串。那么，如果(typeof window.onload != 'function')也就是说window.onload还没有被赋值，就直接把它赋值为func。否则，说明有程序先对其赋值了，那么在页面加载完成之后，应该先执行现有函数再执行自己的新的func。这里现有函数是oldonload()有问题，因为没有赋值。应该是：else {var oldonload = window.onload;window.onload=function(){oldonload();func();}}这里先用oldonload变量把现有的window.onload存下来。然后【应该先执行现有函数再执行自己的新的func】是两件事。为了按顺序完成两件事，所以这里又多写了一个函数，函数内容是{oldonload();func();}然后这个函数被赋值给了window.onload。
+
+      //简单来说：
+      // addLoadEvent函数主要是完成如下的操作：
+      //1、把现有的window.onload事件处理函数的值存入到oldonload中。
+      //2、如果在这个处理函数上还没有绑定任何函数，就将该函数添加给它。
+      //3、如果在这个处理函数上已经绑定了一些函数，就把该函数追加到现有指定的末尾。
+      function addloadEvent(func) {
+        var oldonload = window.onload;
+        if (typeof window.onload != "function") {
+          window.onload = func;
+        } else {
+          window.onload = function () {
+            if (oldonload) {
+              oldonload();
+            }
+            func();
+          };
+        }
+      }
+      addloadEvent(showTime);
+      addloadEvent(day);
+      addloadEvent(tb);
+      //在页面加载完后立即执行多个函数完美方案over。
+      //天时秒分倒计时
+      function tb() {
+        var myDate = new Date(); //获取当前时间
+        var endtime = new Date("2018,11,26"); //获取结束时间
+        //换算成秒 小数点向下舍入取整
+        var ltime = Math.floor((endtime.getTime() - myDate.getTime()) / 1000); //getTime() 方法可返回距 1970 年 1 月 1 日之间的毫秒数
+        //console.log(ltime)
+        //换算成天 小数点向下舍入取整
+        var d = Math.floor(ltime / (24 * 60 * 60));
+        //换算成小时取去掉天数的余数（也就是小时） 小数点向下舍入取整
+        var h = Math.floor((ltime / (60 * 60)) % 24);
+        //换算成分钟取去掉小时的余数（也就是分钟） 小数点向下舍入取整
+        var m = Math.floor((ltime / 60) % 60);
+        //换算成秒钟取去掉分钟的余数（也就是秒） 小数点向下舍入取整
+        var s = Math.floor(ltime % 60);
+        document.getElementById("tm").innerHTML =
+          "距2019年元旦还有:" + d + "天" + h + "小时" + m + "分钟" + s + "秒";
+        if (ltime <= 0) {
+          document.getElementById("tm").innerHTML = "元旦快乐！";
+          clearTimeout(tb);
+        }
+        setTimeout(tb, 1000);
+      }
+      //当秒数为个位数时前面+字符串0
+      function checkTime(i) {
+        return i < 10 ? "0" + i : "" + i;
+      }
+      //当前时间标准格式
+      function showTime() {
+        var myDate = new Date(); //获取当前时间
+        var year = myDate.getFullYear(); //获取年份//getFullYear() 方法可返回一个表示年份的 4 位数字。
+        var month = myDate.getMonth() + 1; //获取月份是0-11的数字所以+1//getMonth() 方法可返回表示月份的数字。
+        var date = myDate.getDate(); //日//getDate() 方法可返回月份的某一天。
+        var day = myDate.getDay(); //getDay() 方法可返回一周（0~6）的某一天的数字
+        var h = myDate.getHours(); //小时//getHours() 方法可返回时间的小时字段。
+        var m = myDate.getMinutes(); //分钟//getMinutes() 方法可返回时间的分钟字段。
+        var s = myDate.getSeconds(); //秒//getSeconds() 方法可返回时间的秒。返回值是 0 ~ 59 之间的一个整数。
+        checkTime(m);
+        checkTime(s);
+        //console.log(day)
+        var week = "日一二三四五六".charAt(day); //charAt() 从某个字符串取得具体的字符。
+        document.getElementById("time").innerHTML =
+          year +
+          "年" +
+          month +
+          "月" +
+          date +
+          "日" +
+          "星期" +
+          week +
+          h +
+          ":" +
+          m +
+          ":" +
+          s;
+        setTimeout(showTime, 1000);
+      }
+      //倒计时天数计算
+      function day() {
+        var myDate = new Date(); //获取当前时间
+        var endtime = new Date("2019,1,1"); //获取结束时间
+        //先换算成毫秒再相减就是时间差，再除以一天的毫秒数结果是带有小数点的，用math方法进一位取整
+        var ltime = Math.ceil(
+          (endtime.getTime() - myDate.getTime()) / (24 * 60 * 60 * 1000)
+        ); //ceil() 方法可对一个数进行上舍入。
+        document.getElementById("day").innerHTML =
+          "距2019年元旦还有:" + ltime + "天";
+      }
+    </script>
+  </body>
+</html>

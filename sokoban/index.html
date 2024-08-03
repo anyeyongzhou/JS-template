@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .game {
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .win {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .5);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        .win p {
+            font-size: 3em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game">
+
+    </div>
+    <div class="win">
+        <p>
+            成功过关！
+        </p>
+    </div>
+    <script src="game.js"></script>
+</body>
+
+</html>

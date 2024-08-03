@@ -1,0 +1,104 @@
+*{
+  /* 初始化内外边距 */
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #091921;
+}
+
+/* 时钟的容器盒子 */
+.clock{
+  width: 350px;
+  height: 350px;
+  border: 3px solid #091921;
+  background: url("../images/clock.png") no-repeat center/cover;
+  border-radius: 50%;
+  box-shadow: 0 -15px 15px rgba(255, 255, 255, .05),
+  inset 0 -15px 15px rgba(255, 255, 255, .05),
+  0 15px 15px rgba(0, 0, 0, .05),
+  inset 0 15px 15px rgba(0, 0, 0, .05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 接下来我们来制作中间的白色轴点 */
+.clock::before{
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  position: absolute;
+  border-radius: 50%;
+  z-index: 999;
+}
+
+/* 时针、分针、秒针这三个盒子的公共样式 */
+.hour, .min, .sec{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}
+
+/* 时针容器盒子 */
+.hour{
+  width: 160px;
+  height: 160px;
+  /* border: 1px solid red; */
+}
+
+/* 时针 */
+.hour::before{
+  content : "";
+  position: absolute;
+  width: 8px;
+  height: 80px;
+  background-color: #ff105e;
+  z-index: 10;
+  border-radius: 6px 6px 0 0;
+}
+
+/* 时针一旦搞定了，那么分针、秒针都是一样的 */
+
+/* 分针容器盒子 */
+.min{
+  width: 190px;
+  height: 190px;
+  /* border: 1px solid blue; */
+}
+
+/* 分针 */
+.min::before{
+  content : "";
+  position: absolute;
+  width: 4px;
+  height: 90px;
+  background-color: #fff;
+  z-index: 11;
+  border-radius: 6px 6px 0 0;
+}
+
+/* 秒针容器盒子 */
+.sec{
+  width: 230px;
+  height: 230px;
+  /* border: 1px solid yellow; */
+}
+
+/* 秒针 */
+.sec::before{
+  content : "";
+  position: absolute;
+  width: 2px;
+  height: 150px;
+  background-color: #fff;
+  z-index: 12;
+  border-radius: 6px 6px 0 0;
+}

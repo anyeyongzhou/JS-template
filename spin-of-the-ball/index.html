@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(#fff, #333);
+      }
+      .selector {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 140px;
+        height: 140px;
+        margin-left: -70px;
+        margin-top: -70px;
+      }
+      .selector button {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: deeppink;
+        color: #fff;
+        border: 0;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+      }
+      .selector button:hover {
+        background: #c71585;
+      }
+      .selector ul {
+        position: absolute;
+        top: -20px;
+        bottom: -20px;
+        left: -20px;
+        right: -20px;
+      }
+      .selector li {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition: all 0.8s ease-in-out;
+      }
+      .selector li input {
+        display: none;
+      }
+      .selector li label {
+        position: absolute;
+        top: -120px;
+        left: 50%;
+        margin-left: 0px;
+        width: 0px;
+        height: 0px;
+        background: #fff;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 0px;
+        overflow: hidden;
+        box-shadow: none;
+        font-size: 0px;
+        transition: all 0.8s ease-in-out, color 0.1s, background 0.1s;
+      }
+      .selector li label:hover {
+        color: orange;
+      }
+      .selector li input:checked + label {
+        background: orange;
+        color: #fff;
+      }
+      .selector li input:checked + label:hover {
+        background: #ff6600;
+      }
+      .selector.open li label {
+        width: 80px;
+        height: 80px;
+        margin-left: -40px;
+        line-height: 80px;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="selector">
+      <ul>
+        <li>
+          <input id="1" type="checkbox" />
+          <label for="1">unit 1</label>
+        </li>
+        <li>
+          <input id="2" type="checkbox" />
+          <label for="2">unit 2</label>
+        </li>
+        <li>
+          <input id="3" type="checkbox" />
+          <label for="3">unit 3</label>
+        </li>
+        <li>
+          <input id="4" type="checkbox" />
+          <label for="4">unit 4</label>
+        </li>
+        <li>
+          <input id="5" type="checkbox" />
+          <label for="5">unit 5</label>
+        </li>
+        <li>
+          <input id="6" type="checkbox" />
+          <label for="6">unit 6</label>
+        </li>
+        <li>
+          <input id="7" type="checkbox" />
+          <label for="7">unit 7</label>
+        </li>
+        <li>
+          <input id="8" type="checkbox" />
+          <label for="8">unit 8</label>
+        </li>
+      </ul>
+      <button type="">click</button>
+    </div>
+    <script src="./jquery.js"></script>
+    <script>
+      //li动态变化
+      function rotateZ(li, deg) {
+        $(li)
+          .css({ transform: "rotateZ(" + deg + "deg)" })
+          .find("label")
+          .css({ transform: "rotateZ(" + -deg + "deg)" });
+      }
+
+      // 展示、隐藏li
+      function changeOptions(ele) {
+        var $selector = $(ele).parent(); //选出父元素selectot
+        $selector.toggleClass("open"); //给父元素设置上open类名
+        var $li = $selector.find("li"); //选出所有的li
+        var deg = 360 / $li.length; //算出间距角度
+        for (var i = 0; i < $li.length; i++) {
+          var d = i * deg; //算出每个li所在的角度deg
+          $selector.hasClass("open")
+            ? rotateZ($li[i], d)
+            : rotateZ($li[i], -360);
+        }
+      }
+      $("button").click(function () {
+        changeOptions(this);
+      });
+
+      setTimeout(function () {
+        changeOptions(".selector button");
+      }, 100);
+    </script>
+  </body>
+</html>

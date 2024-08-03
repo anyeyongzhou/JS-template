@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.swiper-wrapper {
+  width: 564px;
+  height: 315px;
+  border-radius: 12px;
+  margin: 0 auto;
+  background-color: #fac;
+  font-size: 0;
+  overflow: hidden;
+  position: relative;
+}
+.swiper {
+  display: flex;
+  /* transition: all .5s; */
+  /* transform: translateX(0); */
+  position: absolute;
+  left: 0;
+  /* 0  0 */
+  /* 1  -564*1 */
+  /* 2  -564*2 */
+  /* 3  -564*3 */
+  /* 4  -564*4 */
+}
+.swiper li {
+  flex-shrink: 0;
+}
+.swiper li img {
+  width: 564px;
+}
+
+.l-btn {
+  display: block;
+  height: 30px;
+  width: 20px;
+  line-height: 30px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  margin-top: -15px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 0 15px 15px 0;
+  cursor: pointer;
+  text-align: center;
+}
+
+.r-btn {
+  display: block;
+  height: 30px;
+  width: 20px;
+  line-height: 30px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -15px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 15px 0 0 15px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.dots-list {
+  border-radius: 10px;
+  position: absolute;
+  bottom: 15px;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 3px;
+  background-color: rgba(255, 255, 255, 0.3);
+  /* margin-left: -39px; */
+}
+
+.dots-list li {
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #fff;
+  margin: 0 3px;
+  cursor: pointer;
+}
+
+.dots-list li.active {
+  background-color: #ff5000;
+}

@@ -1,0 +1,102 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+.wapper{
+    position: relative;
+    width: 205px;
+    margin: 400px auto;
+}
+.wapper  div.nav{
+    padding: 0 12px;
+    background: #f8f8f8;
+    border-radius: 24px;
+    margin-bottom: 16px;
+    font-size: 0;
+}
+.wapper  div.nav a{
+    display:inline-block;
+    font-size: 15px;
+    line-height: 42px;
+    /* letter-spacing: normal; */
+    /* vertical-align: top; */
+    margin: 0 10px;
+    color: #666;
+
+}
+.wapper  div.nav a.nav-blod{
+    margin: 0 15px 0 6px;
+    position: relative;
+    font-weight: 700;
+    color: #000;
+}
+.wapper  div.nav a.nav-blod::after{
+    position: absolute;
+    content: '';
+    width: 1px;
+    height: 12px;
+    background-color: #ccc;
+    top: 50%;
+    right: -12px;
+    margin-top:-6px;
+
+}
+.wapper  div.nav a.nav-blod:hover{
+    color: #ff5c38;
+}
+a.T4{
+    width: 60px;
+}
+
+/* 下面是弹窗的部分 */
+.nav_mask_area{
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 106px;
+    padding: 28px 0 28px 30px;
+    width: 360px;
+    background: white;
+    box-shadow: 0 28px 50px rgba(25, 24, 40, 0.35);
+    border-radius: 4px;
+    /* white-space: normal; */
+    white-space: normal;
+}
+.nav_mask_area:after{
+    position: absolute;
+    left: 60px;
+    bottom: -14px;
+    content: '';
+    width: 0;
+    height: 0;
+    border:7px solid transparent;
+    border-top-color: #fff;
+}
+.nav_mask_area .nav_mask_title{
+
+}
+.nav_mask_area .nav_mask_title a{
+    display: inline-block;
+    color:#ff5c38; 
+    line-height: 18px;
+    text-align: left;
+}
+.nav_mask_area .nav_mask_inner{
+    font-size: 0;
+    /* white-space: normal; */
+}
+.nav_mask_area .nav_mask_inner a{
+    display: inline-block;
+    width: 100px;
+    font-size: 13px;
+    margin: 15px 15px 0 0 ;
+    line-height: 18px;
+    color: #111;
+    overflow: hidden;
+    /* letter-spacing: normal; */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}

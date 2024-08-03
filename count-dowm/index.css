@@ -1,0 +1,82 @@
+body {
+  background: #88cbc0;
+  color: #d27696;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3em;
+  text-align: center;
+  margin-top: 200px;
+}
+
+.card {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  vertical-align: middle;
+  margin: 0 5px;
+  color: #fff;
+  font-size: 50px;
+  position: relative;
+  line-height: 100px;
+  /* 透视，设置景深（这个透视效果是距离该物体多远观察到的） */
+  perspective: 200px;
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.top {
+  height: 50%;
+  background: #285f60;
+  overflow: hidden;
+  border-radius: 5px 5px 0 0;
+  position: relative;
+}
+.bottom {
+  height: 50%;
+  background: #367e7f;
+  overflow: hidden;
+  border-radius: 0 0 5px 5px;
+  position: relative;
+}
+.bottom span {
+  display: block;
+  margin-top: -50px;
+}
+
+.front .top {
+  /* 设置变形原点：横向居中，纵向靠下 */
+  transform-origin: center bottom;
+  /* 它的css属性变化不是瞬间完成，而是在0.5秒内完成 */
+  transition: 0.5s;
+  /* 背面不可见 */
+  backface-visibility: hidden;
+}
+
+.card.flip .front .top {
+  transform: rotateX(-180deg);
+}
+
+.back .bottom {
+  transform-origin: center top;
+  transform: rotateX(180deg);
+  transition: 0.5s;
+}
+.card.flip .back .bottom {
+  transform: rotateX(0deg);
+}
+/* 设置前后关系 */
+.front .top {
+  z-index: 5;
+}
+.back .bottom {
+  z-index: 4;
+}

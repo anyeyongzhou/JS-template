@@ -1,0 +1,19 @@
+<mxfile host="65bd71144e">
+    <diagram id="nrS16ULtItvuY9-g6DG4" name="第 1 页">
+        <mxGraphModel dx="588" dy="768" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="背景层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="110" width="450" height="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="灰色导航" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="110" width="450" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="侧边选择" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" vertex="1" parent="1">
+                    <mxGeometry x="470" y="170" width="80" height="210" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

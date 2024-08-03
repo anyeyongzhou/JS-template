@@ -1,0 +1,89 @@
+/* 初始化内外边距 */
+* {
+    margin: 0;
+    padding: 0;
+    font-weight: 100;
+    color: #fff;
+}
+
+/* body 仅仅给一个颜色即可 */
+body {
+    background-color: #20152d;
+}
+
+/* 最外层容器样式 */
+.container{
+    width: 1000px;
+    margin: 100px auto;
+    /* border: 1px solid #fff; */
+}
+
+/* 上方标题样式 */
+.text{
+    text-align: center;
+    font-size: 36px;
+    letter-spacing: 2px;
+    margin-bottom: 120px;
+}
+
+/* 接下来，重点就是下方评分区域 */
+
+/* 首先来设置外层容器的样式 */
+.rating{
+    width: 100%;
+    height: 200px;
+    /* border: 1px solid red; */
+    /* 我们将 rating 评分的外层容器设置为弹性盒子
+    从而使我们能够更好的控制里面的每一个 label 的布局 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* label 是 .rating(评分容器) 下面的每一个弹性项目
+label 分为两个部分，一个是单选框，一个是 div（实际要显示的内容）
+一会儿会将单选框隐藏掉 */
+.rating label{
+    text-align: center;
+}
+
+/* 接下来设置 label 下的 div 的样式（实际要显示的内容） */
+/* 我们先将所有的 div 隐藏起来，之后只把选中状态下的 div 显示出来即可 */
+.rating label div{
+    width: 0px;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0;
+    filter: grayscale(1);
+    transition: .5s;
+}
+
+/* 设置图片下面的标题样式 */
+.rating label h4{
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+/* 接下来我们要让当前选中的 div 显示出来 */
+.rating label input:checked+div{
+    width: 200px;
+    opacity: 1;
+    filter: grayscale(0);
+}
+
+/* 下一步，当鼠标移入评分容器的时候，其他隐藏的 div 显示出来 */
+.rating:hover label div{
+    width: 200px;
+    opacity: .5;
+}
+
+/* 将滤镜去掉，只保留透明度 */
+label div:hover{
+    filter: grayscale(0);
+}
+
+/* 最后一步，去除单选框 */
+.rating input{
+    display: none;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试页</title>
+  <style>
+    .container{
+      width: 400px;
+      height: 400px;
+      border: 1px solid;
+      display: flex;
+      /* 当我们设置了弹性盒子之后
+      就非常方便的控制子元素在水平和垂直轴的布局 */
+      justify-content: space-between;
+      align-items: center;
+    }
+    .item{
+      width: 80px;
+      height: 80px;
+      border: 1px solid;
+    } 
+    .test{
+      width: 300px;
+      height: 300px;
+      border: 1px solid;
+      background-color: rgba(255, 0, 0, 0.5);
+      margin: 80px;
+      /* box-shadow: 10px 10px 5px 10px red; */
+    }
+    p::before{
+     content:'&';
+     color: red;
+     border: 1px solid;
+     width: 100px;
+     height: 100px;
+     display: inline-block;
+    }
+    .item2{
+      width: 200px;
+      height: 200px;
+      border: 1px solid;
+      margin: 80px;
+      transform: rotate(45deg);
+    }
+  </style>
+</head>
+<body>
+  <!-- 1. 弹性盒子 -->
+  <!-- <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+  </div> -->
+  <!-- 2. 盒子阴影 -->
+  <!-- <div class="test"></div> -->
+  <!-- 3. 伪元素 -->
+  <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita quasi, excepturi porro doloremque id at delectus est eligendi quidem soluta eos nulla placeat quae voluptates maxime non, minus sequi nemo natus, praesentium perspiciatis. Eum praesentium laudantium ut quasi obcaecati natus totam placeat eveniet suscipit facilis harum, qui culpa beatae et.</p> -->
+  <div class="item2">Lorem, ipsum dolor.</div>
+</body>
+</html>

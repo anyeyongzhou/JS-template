@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./plugin/message.css" />
+  </head>
+
+  <body>
+    <button id="btnInfo">提示</button>
+    <button id="btnSuccess">成功的提示</button>
+    <button id="btnWarn">3秒后消失</button>
+    <button id="btnError">错误提示，带有回调</button>
+
+    <script src="./plugin/message.js"></script>
+    <script>
+      btnInfo.onclick = function () {
+        message("一个普通的提示");
+      };
+
+      btnSuccess.onclick = function () {
+        message("成功的提示", "success");
+      };
+
+      btnWarn.onclick = function () {
+        message({
+          content: "一个警告，3秒后消失",
+          duration: 3, //3秒后消失
+          type: "warn",
+        });
+      };
+
+      btnError.onclick = function () {
+        message({
+          content: "错误提示，带有回调",
+          type: "error",
+          onClose: function () {
+            console.log("提示关闭了");
+          },
+        });
+      };
+    </script>
+  </body>
+</html>

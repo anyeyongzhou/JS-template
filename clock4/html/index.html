@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>拟物时钟</title>
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+
+  <body>
+    <!-- 时钟的容器 -->
+    <div class="clock">
+      <!-- 时针盒子 -->
+      <div class="hour" id="hour"></div>
+      <!-- 分针盒子 -->
+      <div class="min" id="min"></div>
+      <!-- 秒针盒子 -->
+      <div class="sec" id="sec"></div>
+    </div>
+    <script>
+      var deg = 6; // 角度值
+      var hour = document.getElementById("hour");
+      var min = document.getElementById("min");
+      var sec = document.getElementById("sec");
+
+      setInterval(() => {
+        var day = new Date(); // 获取当前的时间
+
+        // 根据当前的时间获取应该旋转的角度
+        // 一圈 360 度，有 12 个格子，360 / 12 = 30
+        var hh = day.getHours() * 30;
+        // 一圈 360 度，有 60 格，每一格 6 度
+        var mm = day.getMinutes() * deg;
+        var ss = day.getSeconds() * deg;
+
+        // 根据计算出来的应该旋转的角度，进行一个旋转即可
+        // 怎么旋转？使用 rotate 方法
+        // 假设现在是12点半，那么分针就应该指向6的位置
+        // 但是时针呢？时针就指向12么？不对，时针应该是指向12-1之间
+        // 所以时针的偏移角度应该是时针的度数+分针的偏移量
+
+        // hour.style.transform = `rotate(${hh + mm / 12}deg)`;
+        // min.style.transform = `rotate(${mm}deg)`;
+        // sec.style.transform = `rotate(${ss}deg)`;
+
+        hour.style.transform = "rotate(" + (hh + (mm/12)) + "deg)";
+        min.style.transform = "rotate(" + mm +"deg)";
+        sec.style.transform = "rotate(" + ss +"deg)";
+      });
+    </script>
+  </body>
+</html>

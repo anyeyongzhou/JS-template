@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #fac;
+        position: absolute;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      // 基本逻辑
+      // 随机数 Math.random();
+      // 运动 动画 随着时间的进行逐帧的播放，形成的动画，？
+      // 让一个元素的top 从 100px 到 0px
+      // top属性，随着时间的变化而变化
+      // 1s 100px
+      // 2s 99px
+      // 3s 98px
+      // 100s 1px
+      // 随着时间的变化元素越走越远
+
+      // 跟时间相关的方法？
+      // 定时器 setInterval, setTimeout
+      // setInterval 间隔定时器  每隔一段时间执行一次 执行多次， 和动画的原理类似，都是
+      // setTimeout  超时定时器  过了一段时间后执行   执行一次
+
+      // 间隔定时器
+      // 开启定时器 每隔 时间间隔 执行函数， 时间间隔单位 毫秒 1秒 = 1000毫秒
+      // setInterval(函数，时间间隔)
+      // 没隔一秒钟，输出一个 1
+      // var tid = setInterval(function () {
+      //   console.log(1);
+      // }, 1000);
+
+      // setInterval 函数返回值， 返回值为数字，用于表示定时编号，表示第几个 间隔定时器
+      // 关闭间隔定时器，clearInterval(定时器编号)
+
+      //没隔一秒输出1 输出10次1 停止
+      // var num = 0;
+      // var tid = setInterval(function () {
+      //   num ++;
+      //   console.log(1);
+      //   if (num == 10) {
+      //     clearInterval(tid);
+      //   }
+      // }, 1000);
+
+      // 回归正题，让一个元素left 从0 px 运动到 100px;
+      // var left = 0;
+      // var tid = setInterval(function () {
+      //   left ++;
+      //   box.style.left = left + 'px';
+      //   if (left == 100) {
+      //     clearInterval(tid);
+      //   }
+      // }, 10);
+
+      // 继续优化！（封装方向， 将变量抽离）
+      var dom = document.getElementsByClassName("box")[0];
+
+      // var start = 0;
+      // var end = 100;
+      // // 元素相对起点运动的距离
+      // var distance = start;
+      // // 如果想控制元素运动的快慢？如何，时间间隔，步长（单位时间，走的的距离）
+      // var step = 3;
+      // var prop = "left";
+      // var tid = setInterval(function () {
+      //   distance += step;
+      //   dom.style[prop] = distance + "px";
+      //   // 校准
+      //   if (distance >= end) {
+      //     // 归位
+      //     dom.style[prop] = end + "px";
+      //     clearInterval(tid);
+      //   }
+      // }, 50);
+      //  dom's prop  from  start to end use time , after fn();
+      function move(dom, prop, start, end, t, fn) {
+        var distance = start;
+        // 如果想控制元素运动的快慢？如何，时间间隔，步长（单位时间，走的的距离）
+        // var step = 3;
+        // v = l / t
+        // (end- start) / t
+        var step = ((end - start) / t) * 10;
+        // 这里的 负数，代表的是方向
+        // if (end < start) {
+        //   step *= -1;
+        // }
+
+        var tid = setInterval(function () {
+          distance += step;
+          dom.style[prop] = distance + "px";
+          // 校准
+          if ((distance >= end && step > 0) || (distance <= end && step < 0)) {
+            // 归位
+            dom.style[prop] = end + "px";
+            clearInterval(tid);
+            if (typeof fn == "function") {
+              fn();
+            }
+          }
+        }, 10);
+        dom.setAttribute("tid", tid);
+      }
+
+      // 继续优化！ （细节）
+      // move(dom, 'left', 0, 300)
+      // move(dom, "left", 0, 300, function () {
+      //   move(dom, "top", 0, 300, function () {
+      //     move(dom, "left", 300, 0, function () {
+      //       move(dom, "top", 300, 0, function () {
+      //         alert("我运动完了");
+      //       });
+      //     });
+      //   });
+      // });
+
+      // 回调地狱👆
+      console.time("on");
+      move(dom, "left", 0, 300, 6000, function () {
+        console.timeEnd("on");
+      });
+
+      Element.prototype.clearInterval = function () {
+        var tid = this.getAttribute("tid");
+        clearInterval(tid);
+      };
+      // dom.clearInterval();
+    </script>
+  </body>
+</html>

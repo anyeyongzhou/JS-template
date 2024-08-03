@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS实现轮播图2</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../switchBtn/switchBtn.css">
+  </head>
+  <body>
+    <!-- 轮播图最外层的容器 -->
+    <div class="swiper">
+      <!-- switch 按钮 -->
+      <input id="switchButton" type="checkbox" class="switch" />
+      <div class="switch-box">
+        <label for="switchButton"></label>
+      </div>
+      <!-- 单选按钮我们不想使用它默认的样式 -->
+      <!-- 所以我们可以让它和 label 进行关联，之后单选框隐藏，点击 label 就相当于点击单选按钮
+      设置 label 的样式即可 -->
+      <input type="radio" name="btn" id="btn1" checked />
+      <input type="radio" name="btn" id="btn2" />
+      <input type="radio" name="btn" id="btn3" />
+      <input type="radio" name="btn" id="btn4" />
+      <input type="radio" name="btn" id="btn5" />
+      <input type="radio" name="btn" id="btn6" />
+      <input type="radio" name="btn" id="btn7" />
+      <label class="swiperBtn" for="btn1"></label
+      ><label class="swiperBtn" for="btn2"></label
+      ><label class="swiperBtn" for="btn3"></label
+      ><label class="swiperBtn" for="btn4"></label
+      ><label class="swiperBtn" for="btn5"></label
+      ><label class="swiperBtn" for="btn6"></label
+      ><label class="swiperBtn" for="btn7"></label>
+      <ul>
+        <li><img src="../images/1.png" alt="" /></li>
+        <li><img src="../images/2.png" alt="" /></li>
+        <li><img src="../images/3.png" alt="" /></li>
+        <li><img src="../images/4.png" alt="" /></li>
+        <li><img src="../images/5.png" alt="" /></li>
+        <li><img src="../images/6.png" alt="" /></li>
+        <li><img src="../images/7.png" alt="" /></li>
+      </ul>
+    </div>
+  </body>
+</html>

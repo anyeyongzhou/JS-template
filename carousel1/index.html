@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./font/iconfont.css" />
+  </head>
+  <body>
+    <!-- 轮播图 -->
+    <!-- 结构 -->
+    <!-- 轮播图整体 -->
+    <div class="swiper-wrapper">
+      <!-- 轮播滚动区域 -->
+      <ul class="swiper" id="swiper">
+        <li>
+          <img src="./img/1.png" />
+        </li>
+        <li>
+          <img src="./img/2.jpg" />
+        </li>
+        <li>
+          <img src="./img/3.png" />
+        </li>
+        <li>
+          <img src="./img/4.jpg" />
+        </li>
+        <li>
+          <img src="./img/5.jpg" />
+        </li>
+        <li>
+          <img src="./img/1.png" />
+        </li>
+      </ul>
+      <!-- 按钮组 -->
+      <span class="l-btn iconfont icon-arrow-left-bold" id="lbtn"></span>
+      <span class="r-btn iconfont icon-arrow-right-bold" id="rbtn"></span>
+      <!-- 小白点 -->
+      <ul class="dots-list" id="dots-list">
+        <li class="active" data-id="0"></li>
+        <li data-id="1"></li>
+        <li data-id="2"></li>
+        <li data-id="3"></li>
+        <li data-id="4"></li>
+      </ul>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>

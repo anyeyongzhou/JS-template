@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>游民星空轮播图</title>
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- 里面一共分为 3 个部分 -->
+      <!-- 大图部分 -->
+      <div class="jumbotron">
+        <!-- 左右箭头 -->
+        <div id="leftArrow" class="leftArrow arrow"></div>
+        <div id="rightArrow" class="rightArrow arrow"></div>
+        <!-- 当前是第几张图片 -->
+        <div class="imageIndexContainer">
+          <span class="currentImage"></span>
+          /
+          <span class="totalImage"></span>
+        </div>
+      </div>
+      <!-- 进度条 -->
+      <div class="progressBar">
+        <div class="progressStatus"></div>
+      </div>
+      <!-- 缩略部分 -->
+      <div class="thumbnail">
+        <ul></ul>
+      </div>
+    </div>
+    <script src="../js/index.js"></script>
+  </body>
+</html>

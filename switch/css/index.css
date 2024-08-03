@@ -1,0 +1,210 @@
+/* 定义颜色变量 */
+
+:root {
+    /** sunny side **/
+    --blue-background: #C2E9F6;
+    --blue-border: #72cce3;
+    --blue-color: #96dcee;
+    --yellow-background: #fffaa8;
+    --yellow-border: #f5eb71;
+    /** dark side **/
+    --indigo-background: #808fc7;
+    --indigo-border: #5d6baa;
+    --indigo-color: #6b7abb;
+    --gray-border: #e8e8ea;
+    --gray-dots: #e8e8ea;
+    /** general **/
+    --white: #fff;
+}
+
+/* 初始化内外边距 */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    /* 下面会用到CSS3的弹性盒属性
+    目的是将 label 居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 隐藏复选框 */
+.toggle-box{
+    display: none;
+}
+
+/* label 的样式，制作了 switch 开关的轮廓 */
+.toggle-label{
+    width: 200px;
+    height: 100px;
+    border: 5px solid var(--blue-border);
+    position: relative;
+    border-radius: 100px;
+    background-color: var(--blue-color);
+    /* 之所以设置相对定位，是因为 span 要绝对定位 */
+    /* 过渡 */
+    transition: all 150ms ease-in;
+}
+
+/* 利用伪元素选择器 before 和 after 来做制作那两横杠 */
+.toggle-label::before{
+    content: "";
+    width: 40px;
+    height: 5px;
+    position: absolute;
+    top: 35px;
+    left: 130px;
+    border-radius: 5px;
+    background: var(--white);
+    /* 过渡 */
+    transition: all 150ms ease-in;
+}
+.toggle-label::after{
+    content: "";
+    width: 40px;
+    height: 5px;
+    position: absolute;
+    top: 60px;
+    left: 115px;
+    border-radius: 5px;
+    background: var(--white);
+    /* 过渡 */
+    transition: all 150ms ease-in;
+}
+
+
+/* span 的样式，制作中间的小球 */
+.toggle-ball{
+    width: 82px;
+    height: 82px;
+    border: 5px solid var(--yellow-border);
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 82px;
+    background-color: var(--yellow-background);
+    /* 之后会应用一个动画 */
+    /* animation: reverse 350ms forwards; */
+    animation-name: reverse;
+    animation-duration: 350ms;
+    animation-fill-mode: forwards;
+}
+
+/* 接下来再次练习 before、after
+利用 before、after 制作小球上面的反光点 */
+.toggle-ball::before{
+    content: "";
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    background-color: var(--gray-border);
+    border-radius: 50%;
+    opacity: 0;
+}
+.toggle-ball::after{
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: 10px;
+    top: 35px;
+    background-color: var(--gray-border);
+    border-radius: 50%;
+    opacity: 0;
+}
+
+/* 设置一下背景图 */
+.background{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--blue-background);
+    z-index: -1;
+}
+
+/* 至此，我们整个状态就已经设置好了 */
+/* 接下来我们就需要点击之后的状态变化 */
+
+/* 通过观察，我们发现状态的变化分为好几个部分 */
+.toggle-box:checked+.toggle-label>.toggle-ball{
+    background: var(--white);
+    border-color: var(--gray-border);
+    /* animation: switch 350ms forwards; */
+    animation-name: switch;
+    animation-duration: 350ms;
+    animation-fill-mode: forwards;
+    /* forwards 表示保持动画播放完成的状态 */
+}
+
+/* 背景颜色的变化 */
+.toggle-box:checked~.background{
+    background: var(--indigo-background);
+}
+
+/* label 的颜色也要发生变化 */
+.toggle-box:checked+.toggle-label{
+    background: var(--indigo-color);
+    border-color: var(--indigo-border);
+}
+
+/* 还有就是两杠 */
+.toggle-box:checked+.toggle-label::before{
+    width: 6px;
+    height: 6px;
+    top: 32px;
+    left: 40px;
+}
+.toggle-box:checked+.toggle-label::after{
+    width: 8px;
+    height: 8px;
+    top: 60px;
+    left: 55px;
+}
+
+/* 小球上面的反光点要显示出来 */
+.toggle-box:checked+.toggle-label>.toggle-ball::before{
+    opacity: 1;
+}
+.toggle-box:checked+.toggle-label>.toggle-ball::after{
+    opacity: 1;
+}
+
+/* 向右移动的动画 */
+@keyframes switch{
+    0%{
+        left: 4px;
+    }
+    60%{
+        left: 4px;
+        width: 112px;
+    }
+    100%{
+        left: 104px;
+        width: 82px;
+    }
+}
+
+/* 向左移动的动画 */
+@keyframes reverse{
+    0%{
+        left: 104px;
+        width: 82px;
+    }
+    60%{
+        left: 72px;
+        width: 112px;
+    }
+    100%{
+        left: 4px;
+    }
+}

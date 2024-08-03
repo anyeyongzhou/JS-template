@@ -1,0 +1,88 @@
+*{
+    /* 初始化内外边距 */
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    list-style: none;
+}
+
+/* 轮播图容器样式 */
+.wrap{
+    width: 800px;
+    height: 450px;
+    margin: 100px auto 20px;
+    /* outline: 1px solid; */
+    display: flex;
+    perspective: 1500px;
+    transform-style: preserve-3d;
+}
+
+.wrap li{
+    width: 40px;
+    height: 100%;
+    /* outline: 1px solid blue; */
+    position: relative;
+    /* 相对定位 */
+    transform-style: preserve-3d;
+    transform-origin: center center -225px
+}
+
+.wrap li span{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* 前面 */
+.wrap li span:nth-child(1){
+    background: url(../img/01.jpeg) no-repeat;
+}
+
+/* 上面 */
+.wrap li span:nth-child(2){
+    background: url(../img/02.jpeg) no-repeat;
+    top:-100%;
+    transform-origin: bottom;
+    transform: rotateX(90deg);
+}
+
+/* 背面 */
+.wrap li span:nth-child(3){
+    background: url(../img/03.jpeg) no-repeat;
+    transform:translateZ(-450px) rotateX(180deg);
+}
+
+/* 下面 */
+.wrap li span:nth-child(4){
+    background: url(../img/04.jpeg) no-repeat;
+    top: 100%;
+    transform-origin: top;
+    transform: rotateX(-90deg);
+}
+
+
+/* 指示按钮样式 */
+.btn-grounp{
+    width: 500px;
+    height: 8px;
+    /* border: 1px solid; */
+    margin: 0 auto;
+    display: flex;
+    justify-content:space-between;
+}
+
+.btn-grounp li{
+    width: 100px;
+    height: 100%;
+    background-color: rgb(195, 200, 204);
+    /* 设置圆角 */
+    border-radius: 10px;
+}
+
+.btn-grounp li.active{
+    background-color: rgb(225, 89, 89);
+}

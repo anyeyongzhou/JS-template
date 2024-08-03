@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>测试页</title>
+    <style>
+      div {
+        width: min(300px,200px, 50px);
+        height: 300px;
+        margin: 10px;
+      }
+      #div1 {
+        background-color: var(--main-bg-color);
+      }
+
+      #div2 {
+        background-color: var(--main-bg-color);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 1. 弹性盒布局 -->
+    <!-- <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+  </div> -->
+    <!-- <div>
+      我是父元素div
+      <p>
+        我是子元素p
+        <span>我是孙元素span</span>
+      </p>
+    </div> -->
+    <!-- 3. calc函数 -->
+    <!-- <div class="container">
+      <div class="item"></div>
+    </div> -->
+    <!-- 4. var 函数 -->
+    <div id="div1" style="--main-bg-color:skyblue"></div>
+    <div id="div2" style="--main-bg-color:red"></div>
+  </body>
+</html>

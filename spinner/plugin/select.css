@@ -1,0 +1,70 @@
+@import "https://at.alicdn.com/t/font_1564527_yd1tjoow33.css";
+
+.select-beauty {
+    width: 260px;
+    color: #606266;
+    text-align: center;
+    cursor: pointer;
+    height: 40px;
+    display: inline-block;
+    position: relative;
+}
+
+.selected {
+    border: 1px solid #dcdfe6;
+    height: 40px;
+    line-height: 40px;
+    /* css3：圆角边框 */
+    border-radius: 5px;
+    position: relative;
+}
+
+.icon-shangjiantou {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    /* 下面的样式：几乎所有的CSS属性，在变化时，不是瞬间完成变化，而是在0.3秒内完成CSS属性变化，这样，就可以看到一个明显的动画过程 */
+    transition: 0.3s;
+    transform: rotate(180deg);
+}
+
+.expand .icon-shangjiantou {
+    transform: rotate(0deg);
+}
+
+.expand .list {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.list {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    /* 默认隐藏 */
+    opacity: 0;
+    transform-origin: top;
+    transform: scaleY(0);
+
+    transition: 0.3s;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 40px;
+    padding: 10px 0;
+    border: 1px solid #dcdfe6;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.list li:hover {
+    background: #e0edff;
+}
+
+.list li.active {
+    color: #409eff;
+    font-weight: bold;
+}

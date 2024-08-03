@@ -1,0 +1,59 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #222;
+  color: #333;
+}
+
+h1 {
+  font-size: 5em;
+  position: fixed;
+  /* width: 500px;
+  height: 100px; */
+  /*   left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0; */
+  word-break: keep-all;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h1::after {
+  content: '袁老师很帅！';
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(
+    to right,
+    #c23616,
+    #192a56,
+    #00d2d3,
+    yellow,
+    #6d214f,
+    #2e86de,
+    #4cd137,
+    #e84118
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  clip-path: circle(100px at 0% 50%);
+  animation: swing 10s infinite;
+}
+
+@keyframes swing {
+  0% {
+    clip-path: circle(100px at 0% 50%);
+  }
+  50% {
+    clip-path: circle(100px at 100% 50%);
+  }
+  100% {
+    clip-path: circle(100px at 0% 50%);
+  }
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 实现 switch 开关2</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <!-- 复选框，只是为了做点击效果，之后会和 label 关联在一起
+    然后会将这个复选框隐藏起来 -->
+    <input type="checkbox" name="" id="toggle" class="toggle-box">
+    <!-- 这个 label 和上面的复选框进行了关联 -->
+    <!-- 之后设置样式全部都是在设置这个 label -->
+    <label for="toggle" class="toggle-label">
+        <!-- span 用来做开关的小球 -->
+        <span class="toggle-ball"></span>
+    </label>
+    <!-- 背景颜色容器 -->
+    <div class="background"></div>
+</body>
+</html>

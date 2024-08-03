@@ -1,0 +1,54 @@
+body {
+    background-image: url('../img/big1.jpg');
+    background-size: cover;
+    /* - css3 的属性 */
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.skin-node {
+    background-color: #fff;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 251px;
+    display: none;
+}
+
+.skin-wrapper {
+    width: 588px;
+    height: 180px;
+    margin: 30px auto 0px;
+    cursor: pointer;
+}
+
+.skin-wrapper:after {
+    content: "";
+    /* - 伪类 可以作为一个节点在结构上展示出来，不在结构中显示 */
+    display: block;
+    clear: both;
+}
+
+.skin-big-wrapper,
+.skin-small-wrapper {
+    float: left;
+}
+
+.skin-big-wrapper {
+    width: 196px;
+    height: 180px;
+}
+
+.skin-small-wrapper {
+    width: 98px;
+    height: 180px;
+}
+
+.skin-wrapper img {
+    float: left;
+    margin-bottom: 1px;
+    margin-right: 1px;
+}

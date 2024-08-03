@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='uft-8'>
+		<title>原生js选项卡切换</title>
+		<link rel="stylesheet" type="text/css" href="public/puclic.css" />
+		<meta charset="UTF-8" />
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			.container {
+				width: 500px;
+				height: 50px;
+				text-align: center;
+				background: #ccc;
+				margin: 0 auto;
+			}
+			.container ul li {
+				list-style: none;
+				display: inline-block;
+				margin: 10px 10px;
+				padding: 9px;
+				cursor: pointer;
+				color: #fff;
+				font-size: 16px;
+			}		
+			.countent_box {
+				width: 500px;
+			    min-height: 300px;
+				border: 1px solid #ccc;
+				margin: -1px auto;
+				font-size: 14px;
+				line-height: 25px;
+			}
+			.active {
+				border-bottom: 2px solid #EE5600;
+				font-weight: bold;
+			}
+			/*将每个内容区域影藏起来*/
+			.mian1 {
+				display: none;
+			}
+			/*第一个必须显示出来 不然第一个内容要点击才能出来，*/
+			.mian1:nth-child(1) {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<!--选项卡菜单-->
+		<div class="container">
+			<ul class='container_box'>
+				<li class="active">新闻喜讯</li>
+				<li>邓哥奇遇</li>
+				<li>恐惧恶魔</li>
+				<li>道德人性</li>
+			</ul>
+		</div>
+		<!--对应的容器上面几个下面就几个-->
+		<div class="countent_box">
+			<div class="mian1">
+			      为何在心上划下你的姓名 如果不曾爱过你
+			</div>
+			<div class="mian1">
+				今日内容 你学会了没
+			</div>
+			<div class="mian1">
+				恐惧恶魔 你学会了没
+			</div>
+			<div class="mian1">
+                    道德人性 你学会了没
+			</div>
+		</div>
+		<div class="md" style="width: 500px;line-height: 25px;color: red;margin: 0 auto;">
+			可以自己写好布局，然后根据下面的选择器进行操作，定义切换的时候需要添加的class PS:第一个选项卡首先要添加一个class类，下面的内容需要隐藏， 第一块显示的区域css中设置display: block;
+		</div>
+	</body>
+	<script type="text/javascript">
+		//找到选像卡列表的父容器
+		var container = document.getElementsByClassName('container_box');
+		//获取到下面的所有要点击切换的选项卡
+		var btnslist = container[0].getElementsByTagName('li');
+		//alert(btnslist.length) 4个
+		//获取内容显示区域的父容器
+		var countent_box = document.getElementsByClassName("countent_box");
+		//在获取到下面的每一个要显示内容的盒子
+		var aLi1 = countent_box[0].getElementsByClassName("mian1");
+
+		//循环所有的选项卡
+		for(var i = 0; i < btnslist.length; i++) {
+			//给每一个要点击的按钮标记一个序号
+			btnslist[i].index = i;
+			//添加点击事件
+			btnslist[i].onclick = function() {
+				//初始化每个li 的默认样式包括css里面写的
+				for(var i = 0; i < btnslist.length; i++) {
+					//清除每个选项卡的样式class 因为第一个我们开始添加类
+					btnslist[i].className = '';
+					//为当前点击的选项卡添加样式 首先准备一个class样式  例如active 这里例子只是添加下边框
+					this.className = 'active';
+					//上面记录了每个选项卡的标记 下面要显示内容的盒子和选项卡是一样多的
+					//此时 我们只需要将所有的mian1隐藏起来
+					aLi1[i].style.display = 'none';
+				}
+				//再将当前点击选项卡对应的内容区域显示出来
+				aLi1[this.index].style.display = "block"   // this当前作用的对象
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试页</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* div{
+            width: 50vw;
+            height: 50vh;
+            background-color: red;
+        } */
+        .container{
+            width: 500px;
+            height: 500px;
+            border: 1px solid;
+            display: flex;
+            justify-content: space-evenly;
+            /* align-items: center; */
+        }
+        .item{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+        img{
+            width: 600px;
+            height: 600px;
+            image-rendering: pixelated;
+        }
+        .test{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            transition: 2s ease-in-out 2s;
+        }
+        .test:hover{
+            height: 500px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. vw 和 vh -->
+    <!-- <div></div> -->
+    <!-- 2. 弹性盒布局 -->
+    <!-- <div class="container">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div> -->
+    <!-- 3. image-rendering -->
+    <!-- <img src="../img/img1_20x20.jpg" alt=""> -->
+    <!-- 4. CSS3过渡 -->
+    <div class="test"></div>
+</body>
+</html>

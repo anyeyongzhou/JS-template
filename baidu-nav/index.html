@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>百度搜索首页切换</title>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none
+        }
+        
+        html,
+        bogy {
+            height: 100%;
+        }
+        
+        body {
+            background: url(images/bg.jpg) no-repeat center /cover;
+            font-size: 14px;
+        }
+        
+        .wrapper {
+            width: 920px;
+            height: 320px;
+            margin: 150px auto 0;
+            /* 弹性盒子布局属性 */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        /*左边导航-开始*/
+        
+        .nav {
+            width: 80px;
+            height: 320px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .nav ul li {
+            line-height: 36px;
+            height: 36px;
+            cursor: pointer;
+            color: #fff;
+        }
+        
+        .nav ul li:hover {
+            display: block;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .content-container {
+            width: 810px;
+            height: 320px;
+            overflow: hidden;
+        }
+        
+        .content-container .content-item {
+            width: 810px;
+            height: 320px;
+            color: #252525;
+            text-align: center;
+        }
+        
+        .slider-container {
+            /* css3 新增属性 过渡效果*/
+            transition: all .2s linear;
+        }
+        
+        .nav ul li.on {
+            background: url(images/nav1.png);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="nav">
+            <ul>
+                <li class="on">导航</li>
+                <li>新闻</li>
+                <li>音乐</li>
+                <li>星座</li>
+                <li>彩票</li>
+                <li>视频</li>
+            </ul>
+        </div>
+        <div class="content-container">
+            <div class="slider-container">
+                <div class="content-item"><img src="images/1.jpg" /></div>
+                <div class="content-item"><img src="images/2.jpg" /></div>
+                <div class="content-item"><img src="images/3.jpg" /></div>
+                <div class="content-item"><img src="images/4.jpg" /></div>
+                <div class="content-item"><img src="images/5.jpg" /></div>
+                <div class="content-item"><img src="images/6.jpg" /></div>
+            </div>
+        </div>
+        <div>
+            <script>
+                var lists = document.querySelectorAll('ul li')
+                var selectContainer = document.querySelector('.slider-container');
+
+                lists.forEach(function(item, index) {
+                    item.addEventListener('click', function() {
+                        lists.forEach(function(li) {
+                            li.classList.remove('on')
+                        })
+                        selectContainer.style.marginTop = -(index * 320) + 'px';
+                        console.log(index)
+                        this.classList.add('on')
+                    })
+                })
+            </script>
+</body>
+
+</html>

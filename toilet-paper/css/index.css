@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* 外层容器 */
+.container{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+/* 便笺纸样式 */
+.item{
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    border-radius: 10px;
+    /* 设置圆角 */
+    box-shadow: 0 3px 10px rgb(0 0 0 / 25%);
+    /* 设置阴影 */
+    overflow: hidden;
+    /* transition: all .5s; */
+}
+
+.item .title{
+    width: 100%;
+    height: 40px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgb(223, 190, 80);
+    display: flex;
+    /* 设置该容器为一个弹性盒子 */
+    justify-content: space-between;
+    /* 里面的子项目两端对齐 */
+    align-items: center;
+    /* 里面的子项目垂直居中 */
+}
+
+.title div{
+    margin: 0 15px;
+    font-size: 16px;
+    font-weight: 600;
+    user-select: none;
+}
+
+.title div:last-child{
+    cursor: pointer;
+}
+
+/* 中间的输入框样式 */
+.item .content{
+    padding: 10px;
+    width: 280px;
+    height: 300px;
+    outline: none;
+    font-size: 14px;
+    background-color: rgb(241, 240, 143);
+}
+
+/* 下面的两个按钮 */
+.item .control{
+    width: 100%;
+    height: 40px;
+    background-color: rgb(223, 190, 80);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    /* 等间距分隔 */
+    align-items: center;
+}
+
+.control div{
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+}

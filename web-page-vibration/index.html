@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .clear:after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+
+        body {
+            background: #000000;
+            font-family: "微软雅黑";
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /*nav*/
+        nav {
+            height: 60px;
+        }
+
+        .navLogo {
+            float: left;
+            margin-left: 50px;
+        }
+
+        .navLogo img {
+            height: 60px;
+        }
+
+        nav ul {
+            text-align: center;
+        }
+
+        nav li {
+            display: inline;
+            padding: 0 40px;
+        }
+
+        nav li a {
+            color: #fff;
+            font: bold 16px/60px "微软雅黑";
+        }
+
+        nav li a:hover {
+            color: #3fd99e;
+        }
+
+
+
+
+
+
+
+
+        /*banner*/
+        #banner {
+            height: 500px;
+            background: url(images/bg1.jpg) no-repeat center;
+			display: flex;
+			align-items: center;
+        }
+		#banner > div{
+			width: 100%;
+			text-align: center;
+		}
+		#banner p{
+			font-size: 26px;
+			line-height: 45px;
+		}
+
+		.text{
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			font-family: 'LH';
+			font-size: 56px;
+			margin: 0 auto;
+			opacity: 0;
+
+			transition: .2s ease-in;
+		}
+		.text div::first-letter{
+			font-size: 100px;
+		}
+		.text div:nth-child(1){
+			direction: rtl;
+			unicode-bidi: bidi-override;
+			transform-origin: right;
+
+			
+		}
+		.text div:nth-child(2){
+			transform-origin: left;
+
+			/* transform: scaleX(0.5); */
+		}
+
+		@font-face {
+            font-family: "LH";
+            src: url('fonts/qtzzgfylhg.eot') format('embedded-opentype'),
+                url('fonts/qtzzgfylhg.woff') format('woff');
+        }
+
+		.btn{
+			display: inline-block;
+			width: 100px;
+			font-size: 18px;
+			line-height: 45px;
+			background: #3fd99e;
+			
+			animation: 5s color infinite;
+		}
+		.btn a{
+			color: #fff;
+		}
+
+		/* 文字碰撞 */
+		@keyframes left{
+			5%{
+				transform: scaleX(0.2);
+			}
+
+			30%{
+				transform: scaleX(0.8) translateX(-150px);
+			}
+
+			50%{
+				transform: translateX(0px);
+			}
+
+			70%{
+				transform: translateX(-20px);
+			}
+		}
+		@keyframes right{
+			5%{
+				transform: scaleX(0.2);
+			}
+
+			30%{
+				transform: scaleX(0.8) translateX(150px);
+			}
+
+			50%{
+				transform: translateX(0px);
+			}
+
+			70%{
+				transform: translateX(20px);
+			}
+		}
+
+		/* 震动 */
+		@keyframes shake{
+			0%{
+				margin: 0 0 0 0;
+			}
+			10%{
+				margin: -40px 0 0 -40px;
+			}
+			15%{
+				margin: -40px -40px 0 0;
+			}
+			20%{
+				margin: 0 -40px -40px 0;
+			}
+			25%{
+				margin: 0 0 -40px -40px;
+			}
+
+			30%{
+				margin: -20px 0 0 -20px;
+			}
+			40%{
+				margin: -20px -20px 0 0;
+			}
+			50%{
+				margin: 0 -20px -20px 0;
+			}
+			60%{
+				margin: 0 0 -20px -20px;
+			}
+
+			70%{
+				margin: -10px 0 0 -10px;
+			}
+			80%{
+				margin: -10px -10px 0 0;
+			}
+			90%{
+				margin: 0 -10px -10px 0;
+			}
+			100%{
+				margin: 0 0 -10px -10px;
+			}
+		}
+
+		/* 颜色变化 */
+		@keyframes color{
+			0%{
+				background: #84050e;
+			}
+			50%{
+				background: #036a2f;
+			}
+			100%{
+				background: #b60202;
+			}
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var text=document.querySelector('.text');
+			var divs=text.children;
+
+
+			text.style.width='424px';
+			text.style.opacity=1;
+
+			var n=0;
+			text.addEventListener('transitionend',function(){
+				n++;
+				if(n==1){
+					divs[0].style.animation='1s left';
+					divs[1].style.animation='1s right';
+
+					var html=document.querySelector('html');
+					document.documentElement.style.animation='0.9s shake';
+					
+
+					var iframe=document.createElement('iframe');
+					iframe.allow='autoplay';
+					iframe.style='display:none';
+					iframe.src='video/3660.mp3';
+					document.body.appendChild(iframe);
+				}
+			});
+			
+		};
+	</script>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#" target="_blank">首页 </a></li>
+            <li><a href="javascript:;">教学亮点 </a></li>
+            <li><a href="javascript:;">课程大纲 </a></li>
+            <li><a href="javascript:;">常见问题 </a></li>
+        </ul>
+    </nav>
+    <div id="banner">
+        <div>
+            <p>就业保障合同签订</p>
+            <div class="text">
+                <div>渡一好</div>
+                <div>渡一好</div>
+            </div>
+            <p>全国知名企业内部直推</p>
+            <div class="btn">
+                <a href="#">详情</a>
+            </div>
+        </div>
+	</div>
+</body>
+
+</html>

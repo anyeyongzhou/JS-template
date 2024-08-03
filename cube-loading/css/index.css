@@ -1,0 +1,125 @@
+/* 最外层容器样式 */
+.container {
+    width: 300px;
+    height: 200px;
+    /* outline: 1px solid; */
+    margin: 100px auto;
+    position: relative;
+    /* 子绝父相 */
+    transform: rotateX(60deg) rotateZ(45deg);
+    /* 设置它下面的子元素是以2d还是3d的形式呈现 */
+    transform-style: preserve-3d;
+}
+
+/* 接下来我们设置容器下所有的盒子样式 */
+.box {
+    width: 100px;
+    height: 100px;
+    /* outline: 1px solid red; */
+    transform-style: preserve-3d;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* 接下来我们来针对每一个盒子进行定位 */
+
+/* 第一个盒子 */
+.container .box:nth-child(1) {
+    transform: translate(100%, 0%);
+    animation: box1 1s linear infinite;
+}
+
+/* 第二个盒子 */
+.container .box:nth-child(2) {
+    transform: translate(0, 100%);
+    animation: box2 1s linear infinite;
+}
+
+
+/* 第三个盒子 */
+.container .box:nth-child(3) {
+    transform: translate(100%, 100%);
+    animation: box3 1s linear infinite;
+}
+
+/* 第四个盒子 */
+.container .box:nth-child(4) {
+    transform: translate(200%, 0%);
+    animation: box4 1s linear infinite;
+}
+
+/* 接下来我们首先来设置每个盒子容器下面所有的 div */
+.box>div {
+    width: 100%;
+    height: 100%;
+    background-color: #5c8df6;
+    position: absolute;
+    transform: translateZ(50px);
+}
+
+/* 接下来，我们就需要单独来设置每一个面 */
+.box>div:nth-child(2) {
+    background-color: #145af2;
+    transform: rotateY(90deg) translateZ(50px);
+}
+
+.box>div:nth-child(3) {
+    background-color: #447cf5;
+    transform: rotateX(-90deg) translateZ(50px);
+}
+
+/* 阴影 */
+.box>div:nth-child(4) {
+    background-color: #dbe3f4;
+    transform: translateZ(-200px) scale(1.2);
+}
+
+/* 最后一步，我们来设置动画 */
+@keyframes box1 {
+    0%,
+    50% {
+        transform: translate(100%, 0);
+    }
+
+    100%{
+        transform: translate(200%, 0);
+    }
+}
+
+@keyframes box2 {
+    0%{
+        transform: translate(0, 100%);
+    }
+    50% {
+        transform: translate(0, 0);
+    }
+
+    100%{
+        transform: translate(100%, 0);
+    }
+}
+
+@keyframes box3 {
+    0%,
+    50% {
+        transform: translate(100%, 100%);
+    }
+
+    100%{
+        transform: translate(0, 100%);
+    }
+}
+
+@keyframes box4 {
+    0%{
+        transform: translate(200%, 0);
+    }
+    50% {
+        transform: translate(200%, 100%);
+    }
+
+    100%{
+        transform: translate(100%, 100%);
+    }
+}

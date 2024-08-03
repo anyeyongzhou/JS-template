@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				overflow: hidden;
+			}
+			*{
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+	</body>
+	<script>
+		var canvas = document.getElementById("canvas")
+		var kuandu = document.documentElement.clientWidth
+		var gaodu = document.documentElement.clientHeight
+//		console.log(kuandu)
+		canvas.width = kuandu
+		canvas.height = gaodu
+		var a1 = canvas.getContext("2d")
+		var jianbian = a1.createLinearGradient(0,0,0,gaodu)
+		jianbian.addColorStop(0.0,"black")
+		jianbian.addColorStop(0.2,"black")
+		jianbian.addColorStop(1.0,"rgb(19,37,86)")
+		// jianbian.addColorStop(1.0,"rgb(26,18,67)")
+		a1.fillStyle = jianbian
+		a1.fillRect(0,0,kuandu,gaodu)
+		a1.fill()
+		a1.stroke()
+		
+		for(var i=0;i<200;i++){
+			var heng = Math.random()*kuandu
+			var zong = Math.random()*gaodu*0.7
+			var da = Math.random()*2.5+2.5
+			var rotate = Math.random()*72
+			star(a1,da/2,da,heng,zong,rotate);
+		}
+		a1.beginPath()
+		a1.arc(kuandu*0.8,100,70,0,2*Math.PI,false)
+		a1.fillStyle = "white"
+		a1.fill()
+		a1.strokeStyle = "white"
+		a1.shadowOffsetX = 0
+		a1.shadowOffsetY = 0
+		a1.shadowBlur = 10
+		a1.shadowColor = "white"
+		a1.stroke()
+		
+		function star(a,r,R,x,y,rotate){
+			a.save();
+			a.beginPath()
+			a.translate(x,y)
+			a.rotate(rotate*Math.PI/180)
+			for(var i=0;i<5;i++){
+				a.lineTo(
+					Math.cos((18+i*72)/180*Math.PI)*R+0,
+					-Math.sin((18+i*72)/180*Math.PI)*R+0
+				)
+				a.lineTo(
+					Math.cos((54+i*72)/180*Math.PI)*r+0,
+					-Math.sin((54+i*72)/180*Math.PI)*r+0
+				)
+			}
+			a.closePath()
+			a.fillStyle = "white"
+			a.fill()
+			a.shadowOffsetX = 0
+			a.shadowOffsetY = 0
+			a.shadowBlur = 10
+			a.strokeStyle = "white"
+			a.shadowColor = "white"
+			a.stroke()
+			a.restore();
+		}
+
+		
+	</script>
+</html>

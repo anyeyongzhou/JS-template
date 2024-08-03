@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        var selectAll = document.getElementById("selectAll"); // 获取全选元素
+        var ggs = document.getElementsByName("gg"); //获取checkbox相同名字的集合 // 全选或者不选的时候 调用此函数
+
+        function ff(flag) {
+          for (var i = 0; i < ggs.length; i++) {
+            ggs[i].checked = flag;
+          }
+        } //全选的点击事件，根据点击的状态调用上面函数
+
+        selectAll.onclick = function () {
+          if (selectAll.checked) {
+            ff(true);
+          } else {
+            ff(false);
+          }
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li><input type="checkbox" name="" id="selectAll" value="" />全选</li>
+      <li><input type="checkbox" name="gg" id="" value="" />bbbb</li>
+      <li><input type="checkbox" name="gg" id="" value="" />cccc</li>
+      <li><input type="checkbox" name="gg" id="" value="" />eeee</li>
+      <li><input type="checkbox" name="gg" id="" value="" />ffff</li>
+    </ul>
+  </body>
+</html>

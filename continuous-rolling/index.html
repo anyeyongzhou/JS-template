@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排名文字无缝向上滚冬</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/table.css">
+</head>
+<body>
+    <div class="lunbo_div">
+        <div>
+            <img class="cup" src="./images/cup.png"/>
+            <span class="span_bm">
+                <span class="today_title">今日总报名数</span>
+                <br/>
+                <span class="totady_pers">100</span>
+            </span>
+        </div>
+        <div id="bm_content" class="bm_content">
+            <table class="table table-condensed">
+                <thead style="position: fixed; background-color: #eeeeee;">
+                    <tr>
+                        <th style="width:60px; text-align: right;">用户</th>
+                        <th style="width:110px; text-align: center;">购买商品</th>
+                        <th style="width:69px; padding-right: 30px;">时间</th>
+                    </tr>
+                </thead>
+                <tbody id="tb1"></tbody>
+                <tbody id="tb2"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        (function($){
+            //获取页面中滚动表单的各个对象
+            var box = document.getElementById("bm_content");
+            var l1 = document.getElementById("tb1");
+            var l2 = document.getElementById("tb2");
+            autoScroll();//执行开始
+            //自动滚动
+            function autoScroll(){
+                //调用RandList()
+                var product = RanderList();
+                l1.innerHTML = product;
+                //offsetHeight
+                if(l1.offsetHeight > box.offsetHeight){
+                    l2.innerHTML = l1.innerHTML;//clone l1
+                    scrollMove = setInterval(scrollup,30);
+                    box.onmouseover = function(){
+                        //清除计时器
+                        clearInterval(scrollMove)
+                    }
+                }
+            }
+
+            //是否需要无缝连接的判断
+            function scrollup(){
+                //滚动 scrolltop的改变
+                if(box.scrollTop >= l1.offsetHeight){
+                    //从头来过
+                    //滚动条距离顶部的值恰好等于list1的高度时，即达到滚动临界点
+                    //此时将让scrollTop=0,让list1回到初始位置，实现无缝滚动
+                    box.scrollTop = 0;
+                }else{
+                    box.scrollTop++;
+                }
+            }
+
+            //鼠标离开区域
+            box.onmouseout = function(){
+               scrollMove = setInterval(scrollup,30);
+            }
+            
+            //随机添加显示列表
+            function RanderList(){
+                var str = "";
+                for(var i=0;i<20;i++){
+                    var a = i+1;
+                    str += '<tr>';
+                    str += '<td class="ellipsis">';
+                    str += '<img src="./images/portrait_default.png">';
+                    str += '<span class="center" title="张三' + a + '" style="margin-left: 10px;">张三' + a + '</span>';
+                    str += '</td>';
+                    str += '<td class="ellipsis" title="' + a + '年级上海教育版同步课">' + a + '年级上海教育版同步课</td>';
+                    str += '<td class="ellipsis" title="16点46分">16点46分</td>';
+                    str += ' </tr>';
+                }
+                return str;
+            }
+
+        })(jQuery)
+    </script>
+</body>
+</html>

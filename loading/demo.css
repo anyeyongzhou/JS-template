@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  /* 将背景图片设置为渐变背景 */
+  background: linear-gradient(
+    45deg,
+    #6fc7b5 0%,
+    #13bdce,
+    20%,
+    #0094d9 40%,
+    #5a3694 60%,
+    #ee4d74 80%,
+    #f58c58 100%
+  );
+  /* 将背景区域变大 四倍显示 */
+  background-size: 400%;
+  /* 最初默认位置显示左下角 */
+  background-position: 0% 100%;
+  /* 设置定位 */
+  position: relative;
+  /* 背景过渡动画 无限展示*/
+  animation: gradient 7.5s ease-in-out infinite;
+}
+.wrapper * {
+  /* 设置定位不根据滚动条位置变化 */
+  position: fixed;
+  /* wrapper下的元素居中显示 */
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0) rotate(0deg);
+}
+.logo {
+  /* 字体设置 */
+  color: #fff;
+  font-size: 30px;
+  font-weight: bolder;
+}
+/* 包含着小球得正方形旋转一周  为小球得原形运动轨迹 */
+.wrapper .dots.animate .dot {
+  animation: loading-block 2.5s ease-in-out 1;
+}
+/* 小球自身缩放变化  变小变大 */
+.wrapper .dots.animate .dot:after {
+  animation: loading-dot 2.5s ease-in-out 1;
+}
+/* 设置正方形 为小球圆形运动轨迹  为正方形得外接圆 */
+.wrapper .dots .dot {
+  height: 300px;
+  width: 300px;
+}
+
+/* 小球为正方形得伪元素 */
+.wrapper .dots .dot:after {
+  content: "";
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  transform: scale(0.17);
+}
+
+/* 分别设置每一个小球得位置  以及动画延迟 */
+.wrapper .dots .dot:nth-child(1) {
+  top: 129px;
+  left: -197px;
+  animation-delay: 0s;
+}
+.wrapper .dots .dot:nth-child(1):after {
+  transform-origin: top right;
+  top: 0;
+  right: 0;
+  animation-delay: 0s;
+}
+.wrapper .dots .dot:nth-child(2) {
+  top: -142px;
+  left: -183px;
+  animation-delay: 0.25s;
+}
+.wrapper .dots .dot:nth-child(2):after {
+  bottom: 0;
+  right: 0;
+  transform-origin: bottom right;
+  animation-delay: 0.25s;
+}
+.wrapper .dots .dot:nth-child(3) {
+  top: -156px;
+  left: -131px;
+  animation-delay: 0.5s;
+}
+.wrapper .dots .dot:nth-child(3):after {
+  bottom: 0;
+  right: 0;
+  transform-origin: bottom right;
+  animation-delay: 0.5s;
+}
+.wrapper .dots .dot:nth-child(4) {
+  top: 148px;
+  left: 191px;
+  animation-delay: 0.75s;
+}
+.wrapper .dots .dot:nth-child(4):after {
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+  animation-delay: 0.75s;
+}
+.wrapper .dots .dot:nth-child(5) {
+  top: -130px;
+  left: 180px;
+  animation-delay: 1s;
+}
+.wrapper .dots .dot:nth-child(5):after {
+  bottom: 0;
+  left: 0;
+  transform-origin: bottom left;
+  animation-delay: 1s;
+}
+
+/* 利用关键帧设置动画 */
+@keyframes loading-block {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg);
+  }
+}
+
+/* 小球自身大小变化 */
+@keyframes loading-dot {
+  0% {
+    transform: scale(0.17);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.17);
+  }
+}
+
+/* 背景过渡动画  利用渐变背景得位置定位显示  逐渐将动画展示出来*/
+@keyframes gradient {
+  0% {
+    background-position: 0% 100%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}

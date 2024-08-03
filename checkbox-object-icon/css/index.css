@@ -1,0 +1,57 @@
+/* 去除所有元素的内外边距 */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ebfafc;
+}
+
+ul{
+    width: 200px;
+    list-style: none;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
+    3px 3px 5px rgba(0, 0, 0, .1);
+    border-radius: 20px;
+}
+
+ul li{
+    margin: 15px;
+}
+
+.icon-box{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: -2px -2px 5px rgba(255, 255, 255, 1),
+    3px 3px 5px rgba(0, 0, 0, .1);
+    border-radius: 10px;
+}
+
+input[type="checkbox"]{
+    display: none;
+}
+
+.icon-box .iconfont{
+    font-size: 30px;
+    color: #6a9bd8;
+}
+
+input[type="checkbox"]:checked~.icon-box{
+    box-shadow: -2px -2px 5px rgba(255, 255, 255, 1) inset,
+    3px 3px 5px rgba(0, 0, 0, .1) inset;
+}

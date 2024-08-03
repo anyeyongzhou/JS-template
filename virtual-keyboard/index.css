@@ -1,0 +1,110 @@
+/* 加载网络字体 Sen */
+@import 'https://fonts.googleapis.com/css2?family=Sen:wght@700&display=swap';
+* {
+  margin: 0;
+  padding: 0;
+  /* 防脱发 */
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Sen', sans-serif;
+}
+
+.keyboard {
+  width: 920px;
+  height: 324px;
+  margin: 60px auto;
+  border-radius: 13px;
+  padding: 18px;
+
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.key {
+  border-radius: 8px;
+  /* 跨越两列 */
+  grid-column: auto/span 2;
+
+  display: grid;
+  place-items: center;
+}
+
+.s3 {
+  grid-column: auto/span 3;
+}
+.s4 {
+  grid-column: auto/span 4;
+}
+.s5 {
+  grid-column: auto/span 5;
+}
+.s12 {
+  grid-column: auto/span 12;
+}
+
+/* 各种特殊颜色 */
+.c1 {
+  background: #ed4c67;
+  color: #fbdbe1;
+}
+.c2 {
+  background: #d63031;
+  color: #f7d6d6;
+}
+.c3 {
+  background: #12cbc4;
+  color: #cafaf8;
+}
+.c4 {
+  background: #ee5a24;
+  color: #fcded3;
+}
+.c5 {
+  background: #fdcb6e;
+  color: #fff5e2;
+}
+.c6 {
+  background: #1e90ff;
+  color: #d2e9ff;
+}
+.c7 {
+  background: #be2edd;
+  color: #f2d5f8;
+}
+.c8 {
+  background: #5352ed;
+  color: #dddcfb;
+}
+.c9 {
+  background: #26de81;
+  color: #d4f8e6;
+}
+
+/* 搞定一些细节的修饰 */
+body {
+  background: #d8dee8;
+  color: #8a94a4;
+}
+
+.keyboard,
+.key {
+  box-shadow: -3px -3px 10px #f3f5f8, 3px 3px 6px #c2ccdb;
+}
+
+.key {
+  cursor: pointer;
+  /* 
+    过渡：css属性的变化在0.2秒中内完成
+    并非所有的变化都能应用过渡
+  */
+  transition: 0.2s;
+}
+
+.key:hover {
+  box-shadow: 0 0 0 #f3f5f8, 0 0 0 #c2ccdb, inset 3px 3px 6px rgba(0, 0, 0, 0.2),
+    inset -3px -3px 10px rgba(255, 255, 255, 0.3);
+}

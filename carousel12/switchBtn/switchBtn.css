@@ -1,0 +1,62 @@
+/* 外层容器样式 */
+
+.switch-box {
+    width: 50px;
+}
+
+/* 复选框 */
+
+.switch {
+    /* 隐藏 checkbox 默认样式 */
+    display: none;
+}
+
+.switch-box label {
+    /* 通过 label 扩大点击热区 */
+    position: relative;
+    display: block;
+    margin: 1px;
+    height: 26px;
+    cursor: pointer;
+    /* border: 1px solid; */
+}
+
+.switch-box label::after {
+    /* after 设置滚动前背景色 */
+    content: "";
+    display: block;
+    border-radius: 30px;
+    height: 26px;
+    background-color: #dcdfe6;
+    transition: all 0.3s ease;
+}
+
+.switch-box label::before {
+    /* before 设置前滚动小圆球 */
+    content: '';
+    position: absolute;
+    top: calc(50% - 13);
+    left: calc(50% - 13);
+    width: 26px;
+    height: 26px;
+    border-radius: 100%;
+    background-color: #fff;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.06);
+    transform: translateX(-1px);
+    /* 微调小圆球的水平位置 */
+    transition: all 0.3s ease;
+}
+
+/* 设置复选框被选中时小球样式 */
+
+.switch:checked~.switch-box>label::before {
+    /* 语义：被选中的类名为"switch"元素后面的label元素里的伪类元素，进行更改css样式 */
+    /* 形成伪类结构选择器：":"冒号加布尔值"checked" */
+    /* " Ele1 ~ Ele2 "波浪号在css的作用：连接的元素必须有相同的父元素，选择出现在Ele1后的Ele2（但不必跟在Ele1，也就是说可以并列）  */
+    /* switch-box 的宽度(50) - 小圆球的宽度(26) = 24 */
+    transform: translateX(24px);
+}
+
+.switch:checked~.switch-box>label::after {
+    background-color: #00a1d6;
+}

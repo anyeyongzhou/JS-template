@@ -1,0 +1,89 @@
+/* 初始化内外边距 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* vw 前面的数字是百分比 */
+    /* 100vw 就是视口宽度的 100% */
+    /* 100px 代表的是 100 像素 */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1c1f2f;
+}
+
+/* 容器样式 */
+.container {
+    width: 200px;
+    height: 200px;
+    /* 轮廓 */
+    /* outline: 1px solid; */
+    -webkit-box-reflect: below 5px -webkit-linear-gradient(transparent 10%, rgba(0, 0, 0, .5));
+}
+
+/* 半圆形样式 */
+.loader{
+    position: relative;
+    width: 160px;
+    height: 160px;
+    /* outline: 1px solid; */
+    /* transparent 是透明的意思，所以边框是透明的 */
+    border: 20px solid transparent;
+    /* 接下来我给右边和下边的 border 设置颜色 */
+    border-bottom-color: #06c8f0;
+    border-right-color: #06c8f0;
+    /* border-radius 是设置圆角 */
+    border-radius: 50%;
+    transform: rotate(45deg);
+    /* 半圆形一直左右摇摆涉及到CSS3动画的知识 */
+    animation: move 3s ease-in-out infinite alternate;
+    /* ease-in-out 是动画的速度，这个值代表先慢然后快然后慢 */
+}
+
+/* 小球样式 */
+.ball{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* outline: 1px solid red; */
+    animation: ballMove 3s ease-in-out infinite alternate;
+}
+
+.ball::before{
+    content: "";
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+/* 接下来书写两个动画 */
+
+/* loader 旋转的动画 */
+@keyframes move{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(90deg);
+    }
+}
+
+/* 小球旋转的动画 */
+@keyframes ballMove{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(-180deg);
+    }
+}

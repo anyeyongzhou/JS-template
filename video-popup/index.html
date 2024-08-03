@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="wapper">
+        <div class="nav">
+            <a href="#" class="nav-blod nav-1">综艺</a>
+            <a href="#" class="T4">腾讯自制</a>
+            <a href="#">独播</a>
+        </div>
+        <div class="nav">
+            <a href="#" class="nav-blod nav-2">动漫</a>
+            <a href="#" class="T4">国漫</a>
+            <a href="#">日漫</a>
+        </div>
+        <!-- 弹窗部分 -->
+        <div class="nav_mask_area">
+            <div class="nav_mask_title">
+                <a href="#">全部综艺</a>
+            </div>
+            <div class="nav_mask_inner">
+                <a href="#">创造营2020</a>
+                <a href="#">炙热的我们</a>
+                <a href="#">奔跑吧4</a>
+                <a href="#">让生活更好看</a>
+                <a href="#">拜托了冰箱</a>
+                <a href="#">青春环游记</a>
+                <a href="#">极限挑战</a>
+                <a href="#">横冲直撞20</a>
+                <a href="#">王牌对王牌5</a>
+                <a href="#">欢乐喜剧人6</a>
+                <a href="#">歌手.当打之年</a>
+                <a href="#">天赐的声音</a>
+                <a href="#">我家那闺女我家那闺女我家那闺女</a>
+                <a href="#">吐槽大会4</a>
+                <a href="#">笑场</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var timer = null;
+            var eare = document.getElementsByClassName('nav_mask_area')[0];
+            var btn2 = document.getElementsByClassName('nav-2')[0];
+            var btn1 = document.getElementsByClassName('nav-1')[0];
+            btn2.onmouseenter = function () {
+                eare.style.display = 'block';
+                eare.style.bottom = '50px';
+                clearInterval(timer);
+                eare.onmouseleave = function () {
+                    eare.style.display = 'none';
+                }
+                eare.onmouseenter = function () {
+                    clearInterval(timer)
+                }
+                this.onmouseleave = function () {
+
+                    timer = setTimeout(function () {
+                        eare.style.display = 'none';
+                    }, 500)
+                };
+
+            }
+
+
+            btn1.onmouseenter = function () {
+                eare.style.display = 'block';
+                eare.style.bottom = '106px';
+                clearInterval(timer);
+                eare.onmouseleave = function () {
+                    eare.style.display = 'none';
+                }
+                eare.onmouseenter = function () {
+                    clearInterval(timer);
+                }
+                this.onmouseleave = function () {
+
+                    timer = setTimeout(function () {
+                        eare.style.display = 'none';
+                    }, 500)
+                };
+
+            }
+
+
+
+
+
+        })()
+
+
+
+
+    </script>
+</body>
+
+</html>
